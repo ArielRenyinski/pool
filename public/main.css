@@ -1,0 +1,116 @@
+/*Desarrollado de Ariel Renyinski*/
+/*4 As de Poker, al Hacer hover sobre cada carta hace una rotacion de -6 grados*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #0a0a0a; /*Color de fondo*/
+}
+header{
+    display: flex;
+    justify-content: center;
+    height: 100vh;  
+}   
+
+.MesaPoker{
+    align-self: center;
+    width:1000px;
+    height: 500px;
+    background: #095807;
+    border-radius: 25%;
+    border: solid 20px #905e33;
+}
+
+.container{ /*Contenedor de las cartas*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2em;
+}
+
+.card{ /*carta*/
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+    background: #fafafa;
+    border-radius: 8px;
+    transition: 400ms ease-in-out;
+    box-shadow: 0 4px 6px 0 #0505057c; /*Sombra de la carta*/
+}
+
+.card:nth-child(2n+1){ /*Posiciones impares de las cartas*/
+    color: #990013; /*Color de la letra A*/
+}
+
+.card:nth-child(2n){ /*Posiciones pares de las cartas*/
+    color: #000; /*Color de la letra A*/
+}
+
+.card + .card{
+    margin-left: -10px; /*espacio entre las cartas*/
+}
+
+.card:hover{
+    transform: rotate(-6deg);/*Rotacion al tener el mouse */
+}
+
+.card:hover ~ .card { 
+    z-index: 1; /*Superponer la carta seleccionado*/
+    translate: 30px;
+}
+
+.card > .img_big{ /*Icono central de la carta*/
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-self: center;
+    margin: 0 auto; /*Horizontal centrado*/
+}
+
+.izquierdo , .derecho{ /*Margen izquierdo y derecho de la carta (Letra A e Icono)*/
+    display: flex;
+    flex-direction: column;
+    margin: 4px auto;
+}
+
+.derecho{
+    transform: rotate(180deg); /*Rotacion de 180 Grados, para que el Icono y la letra, queden invertidas */
+}
+
+h2{
+    font-size: 35px; /*Letra A de la carta*/
+}
+
+.izquierdo , .derecho > .img_small{ /*estilos del Icono ubicado debajo de la letra A*/
+    width: 25px;
+    height: auto;
+}
+
+
+/*Vista Celular*/
+@media screen and ( orientation: landscape ){
+    .container{ /*Contenedor de las cartas*/
+        margin: 2em auto 4em;
+    }
+    .card{ /*carta*/
+        width: 150px;
+        height: 250px;
+    }
+    .card > .img_big{ /*Icono central de la carta*/
+        width: 80px;
+        height: 80px;
+    }
+    h2{
+        font-size: 30px; /*Letra A de la carta*/
+    }
+    .izquierdo , .derecho > .img_small{ /*estilos del Icono ubicado debajo de la letra A*/
+        width: 20px;
+        height: auto;
+    }
+}
